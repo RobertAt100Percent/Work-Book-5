@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Images Demo</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.classless.min.css"
+    />
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
+    <main>
+      <div>
+        <img src="" />
+        <p>describe image above</p>
+      </div>
+      <div>
+        <img src="" />
+        <p>describe image above</p>
+      </div>
+      <div>
+        <img src="" />
+        <p>describe image above</p>
+      </div>
+    </main>
+    <script>
+        /*by using The querySelectorAll() Method we can just basically select any element that matches a CSS Selector.
+        this will return a NodeList
+        https://www.w3schools.com/cssref/css_selectors.php 
+
+        The querySelectorAll() Method can : 
+        o The querySelectorAll() method returns all elements that matches a CSS selector(s).
+        o The querySelectorAll() method returns a NodeList.
+        o The querySelectorAll() method throws a SYNTAX_ERR exception if the selector(s) is invalid 
+        
+        syntax: 
+        document.querySelectorAll(CSS selectors)
+
+        because this returns a NodeList of HTML elements we can treat the out put of the method as an array and go access it though a for loop
+        CSS selectors select HTML elements based on id, classes, types, attributes, values of attributes etc.
+
+        */
+      const paragraphs = document.querySelectorAll("p");
+      let count = 1;
+      for (const paragraph of paragraphs) {
+        paragraph.style.border = "1px solid black";
+        //added next two lines to improve layout, not a requirement
+        paragraph.style.marginTop = "1rem";
+        paragraph.style.padding = ".5rem";
+        paragraph.innerText = `describe image${count} above`;
+        count++;
+      }
+
+      const images = document.querySelectorAll("img");
+
+      images.forEach((image, index) => {
+        image.classList.add("roundedImg");
+        image.alt = "anime image";
+        image.src = `https://placewaifu.com/image/200?greyscale&${
+          index + 1000
+        }`;
+      });
+    </script>
+  </body>
+</html>
